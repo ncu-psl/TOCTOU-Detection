@@ -1,31 +1,28 @@
 # TOCTOU-Detection
 
 ### 簡介
-[Clang static analyzer](https://clang-analyzer.llvm.org)是一個基於clang的c/c++/object-c原始碼檢測框架，而本工具則是基於clang static analyzer開發的漏洞檢測工具
+[Clang static analyzer](https://clang-analyzer.llvm.org)是一個基於Clang的C/C++/Object-C原始碼檢測框架，而本工具則是基於Clang Static Analyzer開發的漏洞檢測工具
 
 
-### 安裝  
+### 安裝
+環境  
 ```
-安裝環境：ubuntu 12.04 LTS
+OS：ubuntu 12.04 LTS
 ```
-安裝必要工具
+必要套件
 ```
-待補...
+apt-get install build-essential zlib1g-dev python
 ```
-下載編譯
+編譯 & 安裝
 ```
-cd ~
-mkdir llvm
-cd llvm
-git clone https://github.com/ncu-psl/TOCTOU-Detection.git ./llvm
+git clone https://github.com/ncu-psl/TOCTOU-Detection.git llvm
 mkdir build
 cd build
-cmake -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release ../llvm
-make
-cd ..
+../llvm/configure --enable-optimized
+make && make install
 ```
 ### 使用
-檢測testCase.c
+檢測 testCase.c
 ```
 clang --analyze -Xanalyzer -analyzer-checker=alpha.toctou testCase.c
 ```
